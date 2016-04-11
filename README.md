@@ -58,7 +58,7 @@ The above `xzcat` to the USB key will take some time, due to the decompression (
 Begin with your B3 powered off and the power cable removed. Insert the USB key into either of the USB slots on the back of the B3, and make sure the other USB slot is unoccupied. Connect the B3 to your local network using the **wan** Ethernet port. Then, *while holding down the button on the back of the B3*, apply power (insert the power cable). After five seconds or so, release the button. If all is well, the B3 should boot the interstitial kernel off of the USB key (rather than the internal drive), then patch, load and `kexec` the provided 4.5.0 kernel (see later discussion for why the standard 3.10 RedSleeve kernel is not used), and then proceed to mount the root partition (also from the USB key) and start RedSleeve Linux. This will all take about 60 seconds or so. The LED on the front of the B3 should:
 
 1. first, turn **green**, for about 20 seconds, as the interstitial kernel loads; then,
-1. turn **off** for about 10 seconds, and the 'real' kernel is patched and loaded; then
+1. very briefly turn **purple**, and then **off** for a few seconds, as the 'real' kernel is patched and loaded; then
 1. turn **purple** for about 20 seconds, as the real kernel boots, and then
 1. turn **green** as RedSleeve Linux comes up.
 
