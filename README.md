@@ -13,7 +13,7 @@ The image may be downloaded from the link below (or via `wget`, per the followin
 
 Variant | Version | Image | Digital Signature
 :--- | ---: | ---: | ---:
-B3 with or without Internal Drive | 1.0.0 | [redsleeveb3img.xz](https://github.com/sakaki-/redsleeve-on-b3/releases/download/1.0.0/redsleeveimg.xz) | [redsleeveb3img.xz.asc](https://github.com/sakaki-/redsleeve-on-b3/releases/download/1.0.0/redsleeveb3img.xz.asc)
+B3 with or without Internal Drive | 1.0.0 | [redsleeveb3img.xz](https://github.com/sakaki-/redsleeve-on-b3/releases/download/1.0.0/redsleeveb3img.xz) | [redsleeveb3img.xz.asc](https://github.com/sakaki-/redsleeve-on-b3/releases/download/1.0.0/redsleeveb3img.xz.asc)
 
 > Please read the instructions below before proceeding. Also please note that the image is provided 'as is' and without warranty. And also, since it is largely based on the DreamPlug Kirkwood image from [redsleeve.org](http://ftp.redsleeve.org/pub/el7-devel/el7/rootfs/) (fully updated as of 9 Apr 2016), please refer to that site for licensing details of firmware files etc.
 
@@ -110,7 +110,7 @@ You can change your B3's hostname if you like; for example, to change it to 'han
 ```
 [root@rsb3 ~]# hostnamectl set-hostname hana
 [root@rsb3 ~]# exec bash --login
-[root@rsb3 ~]#
+[root@hana ~]#
 ```
 If you do change the hostname, remember to reflect it also in the `/etc/hosts` file.
 
