@@ -218,7 +218,34 @@ From the list returned, you can see the package name is `httpd`. Then, to instal
 ```
 You can install any packages you like using `yum`, it should not break your system. If working from the USB, any packages you install will still be present next time you boot off the USB (and will also be copied over to the hard drive, should you choose to do that, as described earlier).
 
-> Note that even if a kernel upgrade becomes available, your system will _not_ automatically use it unless you edit the `/boot/kexec.sh` script, as described earlier. **Do not use a 'stock' RedSleeve kernel unless it has a version >= 3.15 however**, since that is the point at the B3 patches were merged into the mainline kernel: without these your system will hang during boot. As noted, this image ships with a 4.5.0 kernel for your convenience (built using Gentoo sources, but otherwise 'vanilla').
+> Note that even if a kernel upgrade becomes available, your system will _not_ automatically use it unless you edit the `/boot/kexec.sh` script, as described earlier. **Do not use a 'stock' RedSleeve kernel unless it has a version >= 3.15 however**, since that is the point at the B3 patches were merged into the mainline kernel: without these your system will hang during boot. As noted, this image ships with a 4.5.0 kernel for your convenience (built using Gentoo sources, but otherwise 'vanilla').<br>It is possible to instruct `yum` _not_ to download and install kernel updates. To do so, add the following lines to `/etc/yum.conf`:
+```
+[main]
+exclude = kernel*
+```
+
+If you wish, you can use `yum-cron` to keep your system up-to-date automatically (this is entirely optional). To set this up, proceed as follows:
+```
+[root@rsb3 ~]# yum install yum-cron
+   (confirm when prompted)
+```
+Then, using your favourite editor, add the following line to `/etc/yum/yum-cron.conf`:
+```
+apply_updates = yes
+```
+
+> As noted earlier, you can also exclude the RedSleeve kernel files from auto-updating, by including the following additional stanza in `/etc/yum/yum-cron.conf`:
+```
+[main]
+exclude = kernel*
+```
+
+Then:
+```
+[root@rsb3 ~]# systemctl enable yum-cron
+[root@rsb3 ~]# systemctl start yum-cron
+
+```
 
 For further information about RedSleeve Linux setup, the best resources are the [Red Hat documentation](https://access.redhat.com/documentation/en/red-hat-enterprise-linux/7/) (on whose distribution RedSleeve is patterned) or, similarly, the [CentOS wiki](https://wiki.centos.org/).
 
