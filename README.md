@@ -1,6 +1,6 @@
 # redsleeve-on-b3
 
-Bootable live-USB of [RedSleeve Linux](https://en.wikipedia.org/wiki/RedSleeve) (v7.1) for the Excito B3 miniserver, with kernel 4.5.0.
+Bootable live-USB of [RedSleeve Linux](https://en.wikipedia.org/wiki/RedSleeve) (v7) for the Excito B3 miniserver, with kernel 4.5.0.
 
 To quote [Wikipedia](https://en.wikipedia.org/wiki/RedSleeve) (emphasis added):
 
@@ -105,6 +105,8 @@ The drivers for WiFi (if you have the hardware on your B3) *are* present (and th
 Please note that, as shipped, the B3's **wan** (`eth0`) interface is set up as a DHCP _client_, and the **lan** (`eth1`) interface is running a simple DHCP _server_ (using `dnsmasq`). If your local network does not support DHCP, you should still be able to log in via `eth1` and then modify the configuration for `eth0` (the `wan` port) appropriately (the file you need to edit is `/etc/sysconfig/network-scripts/ifcfg-eth0`; alternatively, just use the supplied `nmtui` tool, as described [here](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Networking_Config_Using_nmtui.html)).
 
 > Please be aware that, because the image uses an interstitial kernel + `kexec` as a kind of overqualified bootloader ^-^ to start the 'real' kernel, the MACs of the B3's ethernet adaptors (`eth0` and `eth1`) are _not_ set by U-Boot, but by the `setethermac` service (see the file `/etc/systemd/system/setethermac@.service`). This service _must_ run before your chosen networking subsystem kicks in: on the image, this is `NetworkManager`, and the appropriate dependency has been already set up for you.
+
+Incidentally, the `dnsmasq` service for `eth1` is controlled by the `/etc/systemd/system/dnsmasq@.service` file; this service is in turn started (and stopped) by NetworkManager as `eth1` comes up (and down) via the `etc/NetworkManager/dispatcher.d/99-eth1` script, following the approach described [here](https://jamielinux.com/docs/libvirt-networking-handbook/appendix/run-dnsmasq-with-systemd.html). The configuration file for `dnsmasq` on `eth1` may be found at `/var/lib/dnsmasq/eth1/dnsmasq.conf`.
 
 You can change your B3's hostname if you like; for example, to change it to 'hana' (and to reflect the change immediately), issue:
 ```
