@@ -229,13 +229,9 @@ If you wish, you can use `yum-cron` to keep your system up-to-date automatically
 [root@rsb3 ~]# yum install yum-cron
    (confirm when prompted)
 ```
-Then, using your favourite editor, add the following line to `/etc/yum/yum-cron.conf`:
+Then, using your favourite editor, add the following lines to `/etc/yum/yum-cron.conf`:
 ```
 apply_updates = yes
-```
-
-> As noted earlier, you can also exclude the RedSleeve kernel files from auto-updating, by including the following additional stanza in `/etc/yum/yum-cron.conf`:
-```
 [main]
 exclude = kernel*
 ```
