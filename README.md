@@ -7,6 +7,7 @@ To quote [Wikipedia](https://en.wikipedia.org/wiki/RedSleeve) (emphasis added):
 > RedSleeve is a free operating system distribution based upon the Linux kernel. It is derived from the Red Hat Enterprise Linux (RHEL) distribution, ported to the ARM architecture. RedSleeve [...] is **not** produced, maintained or supported by Red Hat.
 
 <img src="https://raw.githubusercontent.com/sakaki-/resources/master/excito/b3/Excito_b3.jpg" alt="Excito B3" width="250px" align="right"/>
+
 This project contains a bootable, live-USB image of RedSleeve v7 for the Excito B3 miniserver. You can use it as a rescue disk, to play with RedSleeve Linux, or as the starting point to install RedSleeve on your B3's main hard drive. You can even use it on a diskless B3. No soldering, compilation, or [U-Boot](http://www.denx.de/wiki/U-Boot/WebHome) flashing is required! You can run it without harming your B3's existing software; however, any changes you make while running the system *will* be saved to the USB (i.e., there is persistence).
 
 The image may be downloaded from the link below (or via `wget`, per the following instructions). (Incidentally, the image is 'universal', and should work, without modification, whether your B3 has an internal hard drive fitted or not.)
